@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var str = prompt('Введите строку');
+    function quantityVowels(){
+      var sum = 0;
+      for( let i=0;i<str.length;i++){
+      var vowels = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я', 'А', 'О', 'И', 'Е', 'Ё', 'Э', 'Ы', 'У', 'Ю', 'Я'];
+      if(vowels.includes(str[i])){
+      sum++;
+      };
+      }return sum;
+      }
+    console.log(quantityVowels())
+  </script>
+</body>
+</html>

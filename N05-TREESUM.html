@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var arr = [ 5, 7,
+            [ 4, [2], 8, [1,3], 2 ],
+            [ 9, [] ],
+            1, 8
+          ];
+        function treeSum(array) {
+          var sum = 0;
+          //Перебираем каждый элемент
+          for (let k in array){
+            //Если элемент является массивом
+            if (Array.isArray(array[k])) {
+              //То перебираем каждый элемент 
+              sum += treeSum(array[k])
+            } else {
+            sum += array[k]
+            }
+          };
+          return sum;
+        };
+        console.log(treeSum(arr));
+  </script>
+
+</body>
+</html>
