@@ -16,10 +16,10 @@
         function treeSum(array) {
           var sum = 0;
           //Перебираем каждый элемент
-          for (let k in array){
+          for (let k = 0; k < array.length; k++){
             //Если элемент является массивом
             if (Array.isArray(array[k])) {
-              //То перебираем каждый элемент 
+              //То перебираем каждый элемент
               sum += treeSum(array[k])
             } else {
             sum += array[k]
