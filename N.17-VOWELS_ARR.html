@@ -11,17 +11,17 @@
     var str = prompt('Введите строку');
     function quantityVowels(a){
       var sum = 0;
-      for( let i=0;i<a.length;i++){
+      var arr = a.split('');
       var vowels = ['а', 'о', 'и', 'е', 'ё', 'э', 'ы', 'у', 'ю', 'я', 'А', 'О', 'И', 'Е', 'Ё', 'Э', 'Ы', 'У', 'Ю', 'Я'];
-      if(vowels.includes(a[i])){
-      sum++;
-      };
-      }return sum;
-      }
-    console.log(quantityVowels(str))
-
-
-
+      // var arr = ['ю','в','к','е','о','л'];
+          arr.forEach(function(item,i){
+            if(vowels.includes(arr[i])){
+            sum++;
+            };
+    });
+      return sum
+    };
+    console.log(quantityVowels(str));
   </script>
 </body>
 </html>
