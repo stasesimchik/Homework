@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id='addInfo'>ввод информации о напитке</button>
+  <button id='getInfo'>получение информации о напитке</button>
+  <button id='deleteInfo'>удаление информации о напитке</button>
+  <button id='drinks'>перечень всех напитков</button>
+  <script type="text/javascript">
+    function HashStorageFunc(){
+      var that = {};
+
+      that.addValue = function(key,value){
+        that[key] = value;
+      };
+
+      that.getValue = function(key){
+        if( key in that){
+          return that[key];
+        }else{
+          return undefined;
+        }
+      };
+
+      that.deleteValue = function(key){
+        if(key in that){
+          delete that[key];
+          return true;
+        }else{
+          return false;
+        }
+    
+      };
+
+      that.getKeys = function(){
+        return Object.keys(that);
+      };
+    }
+
+    var drinkStorage = new HashStorageFunc();
+
+    var addInfo = document.getElementById('addInfo');
+    addInfo.onclick = function(){
+      var key = prompt('Введите название напитка');
+      var value = {};
+      value.alcohol = confirm('Напиток алкогольный?');
+      value.recept = prompt('Введите рецепт напитка');
+
+      return drinkStorage.addValue(key, value);
+    }
+  </script>
+</body>
+</html>

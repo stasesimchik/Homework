@@ -1,21 +1,21 @@
 function HashStorageFunc(){
-  var self = this;
+  var that = {};
 
-  self.addValue(key,value){
-    self[key] = value;
+  that.addValue = function(key,value){
+    that[key] = value;
   };
 
-  self.getValue(key){
-    if( key in self){
-      return self[key];
+  that.getValue = function(key){
+    if( key in that){
+      return that[key];
     }else{
       return undefined;
     }
   };
 
-  self.deleteValue(key){
-    if(key in self){
-      delete self[key];
+  that.deleteValue = function(key){
+    if(key in that){
+      delete that[key];
       return true;
     }else{
       return false;
@@ -23,7 +23,19 @@ function HashStorageFunc(){
 
   };
 
-  self.getKeys(){
-    return Object.keys(self);
+  that.getKeys = function(){
+    return Object.keys(that);
   };
+}
+
+var drinkStorage = new HashStorageFunc();
+
+var addInfo = document.querySelector('.addInfo');
+addInfo.onclick = function(){
+  var key = prompt('Введите название напитка');
+  var value = {};
+  value.alcohol = confirm('Напиток алкогольный?');
+  value.recept = prompt('Введите рецепт напитка');
+
+  return drinkStorage.addValue(key, value);
 }
