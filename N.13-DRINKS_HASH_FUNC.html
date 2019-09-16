@@ -13,32 +13,30 @@
   <button id='drinks'>перечень всех напитков</button>
   <script type="text/javascript">
     function HashStorageFunc(){
-      var that = {};
+      this.storage = {};
 
-      that.addValue = function(key,value){
-        that[key] = value;
+      this.addValue = function(key,value){
+        this.storage[key] = value;
       };
 
-      that.getValue = function(key){
-        if( key in that){
-          return that[key];
-        }else{
-          return undefined;
-        }
+      this.getValue = function(key){
+
+          return this.storage[key];
+
       };
 
-      that.deleteValue = function(key){
-        if(key in that){
-          delete that[key];
+      this.deleteValue = function(key){
+        if(key in this.storage){
+          delete this.storage[key];
           return true;
         }else{
           return false;
         }
-    
+
       };
 
-      that.getKeys = function(){
-        return Object.keys(that);
+      this.getKeys = function(){
+        return Object.keys(this.storage);
       };
     }
 
@@ -51,8 +49,38 @@
       value.alcohol = confirm('Напиток алкогольный?');
       value.recept = prompt('Введите рецепт напитка');
 
-      return drinkStorage.addValue(key, value);
+      drinkStorage.addValue(key, value);
     }
+
+    var getInfo = document.getElementById('getInfo');
+    getInfo.onclick = function(){
+      var key = prompt('Введите название напитка');
+      var value = drinkStorage.getValue(key)
+      if(key in drinkStorage.storage){
+        console.log(`Напиток: ${key};
+                    \nАлкогольный: ${value.alcohol ? "Да" : "Нет"};
+                    \nРецепт приготовления:${value.recept}`)
+      }else{alert('ТАКОГО НАПИТКА НЕТ!!!')}
+    }
+
+    var deleteValue = document.getElementById('deleteInfo');
+    deleteInfo.onclick = function(){
+      var key = prompt('Введите название напитка');
+      if(key in drinkStorage.storage){
+           drinkStorage.deleteValue(key)
+           alert('Напиток удален')
+      }else{alert('ТАКОГО НАПИТКА НЕТ!!!')}
+
+    }
+
+    var drinks = document.getElementById('drinks');
+    drinks.onclick = function(){
+      var drinksList = drinkStorage.getKeys()
+      alert(drinksList)
+    }
+
+
+
   </script>
 </body>
 </html>
